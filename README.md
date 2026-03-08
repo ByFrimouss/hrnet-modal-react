@@ -1,16 +1,56 @@
-# React + Vite
+# @byfrimouss/hrnet-modal-react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Composant Modal React accessible et animé — converti depuis le plugin jQuery.modal.js de l'application HRnet WealthHealth.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install @byfrimouss/hrnet-modal-react
+```
 
-## React Compiler
+## Utilisation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```jsx
+import { useState } from "react";
+import Modal from "@byfrimouss/hrnet-modal-react";
 
-## Expanding the ESLint configuration
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Ouvrir la modale</button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Succès !"
+        message="L'employé a bien été créé."
+      />
+    </>
+  );
+}
+```
+
+## Props
+
+| Prop     | Type     | Obligatoire | Défaut | Description                         |
+| -------- | -------- | ----------- | ------ | ----------------------------------- |
+| isOpen   | boolean  | ✅          | —      | Contrôle la visibilité de la modale |
+| onClose  | function | ✅          | —      | Appelée pour fermer la modale       |
+| title    | string   | ❌          | ''     | Titre affiché en haut               |
+| message  | string   | ❌          | ''     | Message principal                   |
+| children | node     | ❌          | null   | Contenu JSX personnalisé            |
+
+## Fonctionnalités
+
+- ✅ Fermeture par clic sur l'overlay
+- ✅ Fermeture par touche Escape
+- ✅ Blocage du scroll du body quand ouverte
+- ✅ Attributs ARIA (accessibilité)
+- ✅ Animation CSS (fadeIn + slideUp)
+- ✅ Zéro dépendance externe (hors React)
+
+## Licence
+
+MIT
