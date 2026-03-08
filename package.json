@@ -1,5 +1,5 @@
 {
-  "name": "hrnet-modal-react",
+  "name": "@byfrimouss/hrnet-modal-react",
   "version": "1.0.0",
   "description": "Accessible React Modal component — converted from jQuery.modal.js for WealthHealth HRnet",
   "author": "Stéphanie Coupama",
